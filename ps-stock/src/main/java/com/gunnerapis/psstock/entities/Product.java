@@ -10,15 +10,17 @@ public class Product implements Serializable{
 	private Long id;
 	private String name;
 	private String mark;
+	private Double price;
 
 	public Product() {
 	}
-
-	public Product(Long id, String name, String mark) {
+	
+	public Product(Long id, String name, String mark, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.mark = mark;
+		this.price = price;
 	}
 
 	public Long getId() {
@@ -45,9 +47,17 @@ public class Product implements Serializable{
 		this.mark = mark;
 	}
 
+	public Double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, mark, name);
+		return Objects.hash(id, mark, name, price);
 	}
 
 	@Override
@@ -59,7 +69,8 @@ public class Product implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return Objects.equals(id, other.id) && Objects.equals(mark, other.mark) && Objects.equals(name, other.name);
-	}
+		return Objects.equals(id, other.id) && Objects.equals(mark, other.mark) && Objects.equals(name, other.name)
+				&& Objects.equals(price, other.price);
+	}	
 
 }
