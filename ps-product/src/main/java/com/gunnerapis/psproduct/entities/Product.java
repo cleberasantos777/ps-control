@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -12,18 +15,20 @@ public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private String marca;
+	private String name;
+	private String mark;
 
 	public Product() {
 	}
 	
-	public Product(Long id, String nome, String marca) {
+	public Product(Long id, String name, String mark) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.marca = marca;
+		this.name = name;
+		this.mark = mark;
 	}
 
 	public Long getId() {
@@ -34,25 +39,25 @@ public class Product implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getMarca() {
-		return marca;
+	public String getMark() {
+		return mark;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public void setMark(String mark) {
+		this.mark = mark;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, marca, nome);
+		return Objects.hash(id, mark, name);
 	}
 
 	@Override
@@ -64,7 +69,7 @@ public class Product implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return Objects.equals(id, other.id) && Objects.equals(marca, other.marca) && Objects.equals(nome, other.nome);
+		return Objects.equals(id, other.id) && Objects.equals(mark, other.mark) && Objects.equals(name, other.name);
 	}	
 
 }
