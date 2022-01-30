@@ -1,36 +1,24 @@
-package com.gunnerapis.psproduct.entities;
+package com.gunnerapis.psstock.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "tb_product")
-public class Product implements Serializable {
+public class Product implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String mark;
-	private Double price;
 
 	public Product() {
 	}
-	
-	public Product(Long id, String name, String mark, Double price) {
+
+	public Product(Long id, String name, String mark) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.mark = mark;
-		this.price = price;
 	}
 
 	public Long getId() {
@@ -57,17 +45,9 @@ public class Product implements Serializable {
 		this.mark = mark;
 	}
 
-	public Double getPrice() {
-		return price;
-	}
-	
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, mark, name, price);
+		return Objects.hash(id, mark, name);
 	}
 
 	@Override
@@ -79,8 +59,7 @@ public class Product implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return Objects.equals(id, other.id) && Objects.equals(mark, other.mark) && Objects.equals(name, other.name)
-				&& Objects.equals(price, other.price);
-	}	
+		return Objects.equals(id, other.id) && Objects.equals(mark, other.mark) && Objects.equals(name, other.name);
+	}
 
 }
